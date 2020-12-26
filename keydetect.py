@@ -26,4 +26,5 @@ if __name__ == "__main__":
                       datefmt="%H:%M:%S")
   while True:
     checkkey()
+    time.sleep(0.1)
 
