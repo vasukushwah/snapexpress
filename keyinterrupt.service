@@ -1,0 +1,11 @@
+[Unit]
+Description=Key detect 
+After=multi-user.target
+
+[Service]
+Type=idle
+ExecStart=/usr/bin/python3 /usr/local/bin/keydetect.py
+Restart=always
+ 
+[Install]
+WantedBy=multi-user.target

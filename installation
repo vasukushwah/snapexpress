@@ -1,0 +1,75 @@
+#!/bin/bash
+
+#  sudo apt-get update
+
+cd /home/pi
+
+wget https://github.com/vasukushwah/snapexpress/zipball/master/
+
+echo
+echo
+echo "#########################################################"
+echo "############# Installing require packages ################"
+echo "#########################################################"
+echo
+echo
+sudo apt-get install unclutter
+
+echo
+echo
+echo "#########################################################"
+echo "######## Copieng .py and .sh files to /usr/local/bin #########"
+echo "#########################################################"
+echo
+echo
+sudo mv *.py /usr/local/bin
+sudo mv *.sh /usr/local/bin
+
+echo
+echo
+echo "#########################################################"
+echo "######## Configuaring autostart file #########"
+echo "#########################################################"
+echo
+echo
+sudo mv autostart /etc/xdg/lxsession/LXDE-pi/autostart
+
+echo
+echo
+echo "#########################################################"
+echo "######## Creating Services #########"
+echo "#########################################################"
+echo
+echo
+sudo mv connection.service /lib/systemd/system
+sudo chmod 644 /lib/systemd/system/connection.service
+chmod +x /usr/local/bin/checkConnection.py
+sudo systemctl daemon-reload
+sudo systemctl enable connection.service
+sudo systemctl start connection.service
+sudo mv keyinterrupt.service /lib/systemd/system
+sudo chmod 644 /lib/systemd/system/keyinterrupt.service
+chmod +x /usr/local/bin/keydetect.py
+sudo systemctl daemon-reload
+sudo systemctl enable keyinterrupt.service
+sudo systemctl start keyinterrupt.service
+
+read -p "Do you want to Reboot ? Press y for YES or Press n for NO : " re
+if [ "$re" == "y" ] || [ "$re" == "Y" ] ; then
+
+	echo
+	echo
+	echo "#########################################################"
+	echo "################## Rebooting System #############"
+	echo "#########################################################"
+	echo
+	echo
+    sudo reboot
+fi
+
+echo
+echo "#########################################################"
+echo "Reboot require for autoload browser... Exit"
+echo "#########################################################"
+echo
+echo "--- All Done Once reboot-- "
