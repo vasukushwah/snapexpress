@@ -21,6 +21,7 @@ echo
 echo
 sudo mv *.py /usr/local/bin
 sudo mv *.sh /usr/local/bin
+sudo mv config.txt /home/pi/Desktop
 
 echo
 echo
