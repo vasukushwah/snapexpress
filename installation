@@ -2,10 +2,6 @@
 
 #  sudo apt-get update
 
-cd /home/pi
-
-wget https://github.com/vasukushwah/snapexpress/zipball/master/
-
 echo
 echo
 echo "#########################################################"
