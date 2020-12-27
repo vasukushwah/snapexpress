@@ -19,9 +19,9 @@ def checkwificonnection():
       except ValueError as e:
           logging.info("Wifi not connected rebooting...")
           command = "/usr/bin/sudo /sbin/shutdown -r now"
-          # process = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
-          # output = process.communicate()[0]
-          # logging.info(output)
+          process = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
+          output = process.communicate()[0]
+          logging.info(output)
       try:
           with open("/home/pi/Desktop/config.txt") as f:
                 data = f.read()
@@ -36,9 +36,9 @@ def checkwificonnection():
       except:          
           logging.info("Url not responding rebooting...")
           command = "/usr/bin/sudo /sbin/shutdown -r now"
-          # process = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
-          # output = process.communicate()[0]
-          # logging.info(output)
+          process = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
+          output = process.communicate()[0]
+          logging.info(output)
                
      
     # do stuff...
