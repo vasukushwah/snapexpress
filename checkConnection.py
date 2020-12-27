@@ -47,7 +47,7 @@ if __name__ == "__main__":
     logging.basicConfig(format=format, level=logging.INFO,
                         datefmt="%H:%M:%S")
     logging.info("Waiting for RPZW....")
-    time.sleep(180)
+    time.sleep(130)
     while True:
       checkwificonnection()
       time.sleep(5)
